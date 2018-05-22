@@ -1,0 +1,32 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*
+ * Base structure
+ */
+
+ html,
+.text-center-registration-new {
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding-top: 20px;
+}
+
+/*
+ * Registration Form
+ */
+
+.form-signin-registration-new {
+  max-width: 350px;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+}
+
+.row_nav-row-registration-new {
+  margin-bottom: 12px;
+  padding-top: 20px;
+}

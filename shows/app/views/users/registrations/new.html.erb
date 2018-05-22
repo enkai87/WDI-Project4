@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  
+  <body class="text-center-registration-new">
+      <h2>Sign Up</h2>
+
+        <form class="form-signin-registration-new">
+
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+
+              <div class="form-group-registration-new">
+                <%= f.label :name %>
+                <%= f.text_field :name, class: 'form-control' %>
+              </div>
+
+              <div class="form-group-registration-new">
+                <%= f.label :email %>
+                <%= f.email_field :email, class: 'form-control' %>
+              </div>
+
+              <div class="form-group-registration-new">
+                <%= f.label :password %>
+                <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+                <% if @validatable %>
+                  <span class="help-block"><%= @minimum_password_length %> characters minimum</span>
+                <% end %>
+              </div>
+
+              <div class="form-group-registration-new">
+                <%= f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+              </div>
+
+          <div class="row_nav-row-registration-new">    
+              <%= f.submit "Sign up", class: 'btn btn-outline-warning' %>
+          </div> 
+            <% end %> 
+        </form>  
+
+          <%= render "users/shared/links" %>
+  </body>
+</html>

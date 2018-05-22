@@ -1,0 +1,104 @@
+<div class="container_search">
+
+  <h1>TVShows Search</h1>
+
+  <form class="form-inline">
+      <%= form_tag(shows_search_path, :method => "get") do %>
+        <%= text_field_tag :a, "", placeholder: "Type here...", class: "form-control mr-md-2" %>
+        <%= submit_tag("Search", :class => "btn btn-outline-warning my-2 my-sm-0") %>
+      <% end %>
+  </form>
+
+  <div class="row_button">  
+    <%= link_to 'Back to Previous', :back, :class => "btn btn-outline-light" %>
+    <%= link_to "Home", root_path, :class => "btn btn-outline-light" %> 
+    <%= link_to 'Clear Search Results', method: :delete, :class => "btn btn-outline-light" %>
+  </div>
+
+</div>
+
+<div class="container_table">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Title</th>
+          <th scope="col">Summary</th>
+          <th scope="col">Image</th>
+          <th scope="col">Genre</th>
+          <th scope="col">Network</th>
+          <th scope="col">Air Day</th>
+          <th scope="col">Air Time</th>
+          <th scope="col">Official Website</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Status</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+     
+      <tbody>
+        <% @shows.each do |show| %>
+          <tr>
+            <td scope="row"><%= show["show"]["id"] %></td>
+            <td><%= show["show"]["name"] %></td>
+            <td><%= show["show"]["summary"] %></td>
+            <td>
+              <% if show["show"]["image"]== nil %>
+                <%= %>
+                  <% else %>
+                    <%= link_to image_tag show["show"]["image"]["medium"] %>
+                      <% end %>
+            </td>
+            <td><%= show["show"]["genres"] %></td>
+            <td>
+              <% if show["show"]["network"] == nil %>
+                <%= %>
+                  <% else %>
+                    <%= show["show"]["network"]["name"] %>
+              <% end %>
+            </td>
+
+            <td>
+              <% if show["show"]["schedule"] == nil %>
+                <%= %>
+                  <% else %>
+                    <%= show["show"]["schedule"]["days"] %>
+              <% end %>  
+            </td> 
+            <td>
+              <% if show["show"]["schedule"] == nil %>
+                <%= %>
+                  <% else %>
+                    <%= show["show"]["schedule"]["time"] %>
+              <% end %>  
+            </td> 
+
+            <td>
+              <% if show["show"]["officialSite"] == nil %>
+                <%= %>
+                  <% else %>
+                    <%= link_to "Website", show["show"]["officialSite"] %>
+              <% end %>  
+            </td>
+
+            <td>
+              <% if show["show"]["rating"] == nil %>
+                <%= %>
+                  <% else %>
+                    <%= show["show"]["rating"]["average"] %>
+              <% end %>  
+            </td>
+
+            <td>
+              <% if show["show"]["status"] == nil %>
+                <%= %>
+                  <% else %>
+                    <%= show["show"]["status"] %>
+              <% end %>  
+            </td>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
